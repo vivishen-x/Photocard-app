@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190815081250) do
+ActiveRecord::Schema.define(version: 20190816063359) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20190815081250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "photo", default: "default.png"
+    t.string "remember_digest"
     t.index ["email"], name: "index_employees_on_email", unique: true
   end
 
