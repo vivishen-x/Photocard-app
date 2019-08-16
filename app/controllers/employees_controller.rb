@@ -6,6 +6,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
+      log_in @employee
       flash[:success] = "Welcome to our service! Fill in more information about you! "
       redirect_to @employee
     else
