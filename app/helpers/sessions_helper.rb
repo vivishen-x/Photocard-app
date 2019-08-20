@@ -9,6 +9,10 @@ module SessionsHelper
     cookies.permanent[:remember_token] = employee.remember_token
   end
 
+  def current_employee?(user)
+    user == current_employee
+  end
+
   def current_employee
     if (employee_id = session[:employee_id])
       @current_employee ||= Employee.find_by(id: session[:employee_id])

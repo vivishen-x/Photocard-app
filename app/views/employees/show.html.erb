@@ -1,17 +1,22 @@
 <% provide(:title, @employee.name) %>
 
-
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
 			<div class="jumbotron card card-block center">
         <%= image_tag(@employee.photo, size: '200') %>
 				<h1><%= @employee.name %></h1>
-          <button type="button" class="btn btn-ouline-primary btn-lg">Edit my profile</button>
-          <p>
-  					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-  				</p>
+					<% if @employee == current_employee %>
+					<%= link_to "Edit my profile ", edit_employee_path(current_employee), class: "btn btn-lg btn-ouline-primary" %>
+					<% end %>
+
+					<%= render 'shared/profile' %>
+
 			</div>
+		</div>
+		<div class="col-md-2">
 		</div>
 	</div>
 </div>

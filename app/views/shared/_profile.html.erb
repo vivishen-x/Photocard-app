@@ -1,0 +1,25 @@
+<% @employee ||= current_employee %>
+<table class = table>
+  <tbody>
+    <tr>
+      <th scope="row">Email</th>
+      <td><%= @employee.email %></td>
+    </tr>
+    <tr>
+      <th scope="row">Position</th>
+      <td><%= @employee.position %></td>
+    </tr>
+    <tr>
+      <th scope="row">Employed At</th>
+      <td>
+      <% unless @employee.employed_at.nil? %>
+      <%= @employee.employed_at.year.to_s + "年" +  @employee.employed_at.month.to_s + "月"%>
+      <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">KIBELA</th>
+      <td>kibela url</td>
+    </tr>
+  </tbody>
+</table>
