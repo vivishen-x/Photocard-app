@@ -201,12 +201,25 @@ input {
   margin-right: 15px;
 }
 
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
 
 
 /* facecard */
 
 .facecard {
-  height: 250px;
   background-color: white;
   padding: 20px;
   display: grid;
@@ -221,7 +234,8 @@ input {
     align-items: center;
     img {
       margin: auto;
-      width: 100%;
+			width: 100%;
+			max-width: 200px;
     }
   }
 }

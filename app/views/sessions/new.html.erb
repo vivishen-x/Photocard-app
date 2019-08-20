@@ -15,6 +15,10 @@
 						<%= e.label :password %>
 						<%= e.password_field :password, placeholder: "Password here", class: 'form-control' %>
 
+						<%= e.label :remember_me, class: "checkbox inline" do %>
+						<%= e.check_box :remember_me %>
+						<span>Remeber me on this computer</span>
+						<% end %>
 						<%= e.submit "Log in", class: "btn btn-primary" %>
             <% end %>
             <p>New user? <%= link_to "Sign up here" , signup_path %></p>
