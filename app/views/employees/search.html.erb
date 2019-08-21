@@ -1,7 +1,8 @@
-<% provide(:title, "All Employees") %>
+<% provide(:title, "Search Result") %>
 <div class="container-fluid">
-	<h1><%= Employee.count %> Employees</h1>
-<%= will_paginate %>
+	<h1><%= pluralize(@employees.count, 'Employee') %></h1>
+  <h3>Searching for "<%= params[:search] %>"</h3>
+  <%= will_paginate %>
 	<div class="row">
 		<div class="col-md-3">
 		</div>
@@ -16,5 +17,5 @@
 		<div class="col-md-3">
 		</div>
 	</div>
-	<%= will_paginate %>
+  <%= will_paginate %>
 </div>

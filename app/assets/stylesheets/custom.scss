@@ -123,8 +123,15 @@ p {
       color: $gray-dark;
     }
   }
+	.navbar-nav > .open > a:focus, a:hover {
+		background-color: #eee;
+		color: #000;
+	}
 }
 
+.navbar li form .form-control {
+	margin-top: 10px;
+}
 
 /* footer */
 
@@ -246,6 +253,30 @@ input {
 			max-width: 200px;
     }
   }
+}
+
+/* pagination */
+
+.pagination {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	li > a {
+		color: #000;
+	}
+	li > a:hover,
+	li > a:focus {
+		color: $pink;
+	}
+	.active > a, .active > a:hover,
+	.active > a:focus {
+		background-color: $pink;
+		border-color: $pink;
+	}
+
+	&:hover {
+		color: $pink;
+	}
 }
 
 /* profile */

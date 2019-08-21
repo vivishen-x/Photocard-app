@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @employees = Employee.all
+    @employees = Employee.paginate(page: params[:page])
   end
 
   def show
@@ -44,6 +44,10 @@ class EmployeesController < ApplicationController
     Employee.find(params[:id]).destroy
     flash[:success] = "Delete successfully"
     redirect_to employees_path
+  end
+
+  def search
+    @employees = Employee.search(params[:search]).paginate(page: params[:page])
   end
 
   private

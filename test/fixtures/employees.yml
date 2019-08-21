@@ -10,3 +10,10 @@ archer:
   email: archer@wamazing.jp
   position: Translator
   password_digest: <%= Employee.digest('password') %>
+
+<% 30.times do |n| %>
+employee_<%= n %>:
+  name:  <%= "Employee #{n}" %>
+  email: <%= "user-#{n}@wamazing.jp" %>
+  password_digest: <%= Employee.digest('password') %>
+<% end %>
