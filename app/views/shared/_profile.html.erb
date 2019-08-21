@@ -23,3 +23,10 @@
     </tr>
   </tbody>
 </table>
+<div class="right">
+<% if current_employee.admin? && !current_employee?(@employee) %>
+  <%= link_to "Delete Account", @employee, method: :delete,
+                        data: { confirm: "Are you sure to delete this employee? " },
+                        class: "btn btn-sm btn-danger" %>
+<% end %>
+</div>

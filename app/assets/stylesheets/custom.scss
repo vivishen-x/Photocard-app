@@ -219,10 +219,14 @@ input {
 
 /* facecard */
 
+.container-fluid a {
+	text-decoration: none;
+}
+
 .facecard {
   background-color: white;
   padding: 15px;
-	margin: 10px;
+	margin: 20px;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -255,6 +259,7 @@ input {
 	}
 }
 
-.dateselector {
-	width: 50%;
+.right {
+	text-align: right;
+	bottom: 10px;
 }

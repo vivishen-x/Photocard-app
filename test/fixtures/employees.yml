@@ -1,5 +1,12 @@
 michael:
   name: Michael Example
   email: michael@wamazing.jp
-  position: none
+  position: Manager
+  password_digest: <%= Employee.digest('password') %>
+  admin: true
+
+archer:
+  name: Archer William
+  email: archer@wamazing.jp
+  position: Translator
   password_digest: <%= Employee.digest('password') %>
