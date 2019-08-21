@@ -1,7 +1,7 @@
 <% if @employee.errors.any? %>
 <div id="error_explanation">
   <div class="alert alert-danger">
-Your sign-up contains <%= pluralize(@employee.errors.count, "errors") %>.
+Your information contains <%= pluralize(@employee.errors.count, "errors") %>.
   </div>
   <ul>
     <% @employee.errors.full_messages.each do |msg| %>

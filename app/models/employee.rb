@@ -8,6 +8,9 @@ class Employee < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+  mount_uploader :photo, PhotoUploader
+  validate :photo_size
+
 
   def Employee.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.min_cost
@@ -40,5 +43,13 @@ class Employee < ApplicationRecord
       all
     end
   end
+
+  private
+
+    def photo_size
+      if photo.size > 2.megabytes
+        errors.add(:photo, "Please upload photo less than 2MB.")
+      end
+    end
 
 end

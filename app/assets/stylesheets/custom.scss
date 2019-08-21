@@ -189,6 +189,7 @@ input {
 }
 
 #error_explanation {
+	margin-top: 10px;
   color: red;
   ul {
     color: red;
@@ -224,13 +225,13 @@ input {
 
 
 
-/* facecard */
+/* photocard */
 
 .container-fluid a {
 	text-decoration: none;
 }
 
-.facecard {
+.photocard {
   background-color: white;
   padding: 15px;
 	margin: 20px;
@@ -244,7 +245,7 @@ input {
       box-shadow: 2px 2px 10px #888888;
 			color: $pink;
   }
-  .facecard-photo {
+  .photocard-photo {
 		text-align: center;
     align-items: center;
     img {
@@ -293,4 +294,12 @@ input {
 .right {
 	text-align: right;
 	bottom: 10px;
+}
+
+
+.photo {
+	text-align: center;
+	input {
+		width: 100%;
+	}
 }

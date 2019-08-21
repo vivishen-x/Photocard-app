@@ -50,10 +50,12 @@ class EmployeesController < ApplicationController
     @employees = Employee.search(params[:search]).paginate(page: params[:page])
   end
 
+  
+
   private
 
     def employee_params
-      params.require(:employee).permit(:name, :email, :position, :employed_at, :password, :password_confirmation)
+      params.require(:employee).permit(:name, :email, :photo, :position, :employed_at, :password, :password_confirmation)
     end
 
     def logged_in_employee
