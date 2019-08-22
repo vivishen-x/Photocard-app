@@ -19,15 +19,17 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @employees = Employee.paginate(page: params[:page])
+    @employees = Employee.paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @employee = Employee.find(params[:id])
+    @teams = @employee.teams
   end
 
   def edit
     @employee = Employee.find(params[:id])
+    @team_employee = @employee.team_employees
   end
 
   def update
@@ -50,12 +52,12 @@ class EmployeesController < ApplicationController
     @employees = Employee.search(params[:search]).paginate(page: params[:page])
   end
 
-  
+
 
   private
 
     def employee_params
-      params.require(:employee).permit(:name, :email, :photo, :position, :employed_at, :password, :password_confirmation)
+      params.require(:employee).permit(:name, :email, :photo, :team_ids, :position, :employed_at, :password, :password_confirmation)
     end
 
     def logged_in_employee

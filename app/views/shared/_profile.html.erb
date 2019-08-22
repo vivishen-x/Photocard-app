@@ -5,10 +5,21 @@
       <th scope="row">Email</th>
       <td><%= @employee.email %></td>
     </tr>
+
+    <tr>
+      <th scope="row">Team</th>
+      <td>
+        <% @teams.each do |team| %>
+          <%= team.name %>
+        <% end %>
+      </td>
+    </tr>
+
     <tr>
       <th scope="row">Position</th>
       <td><%= @employee.position %></td>
     </tr>
+
     <tr>
       <th scope="row">Employed At</th>
       <td>

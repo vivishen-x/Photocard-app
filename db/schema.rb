@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190821065208) do
+ActiveRecord::Schema.define(version: 20190822011224) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(version: 20190821065208) do
     t.string "photo", default: ""
     t.string "remember_digest"
     t.index ["email"], name: "index_employees_on_email", unique: true
+  end
+
+  create_table "team_employees", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_team_employees_on_employee_id"
+    t.index ["team_id"], name: "index_team_employees_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @employees = Employee.all
+    @teams = Team.all
+    
   end
 end

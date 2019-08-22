@@ -17,3 +17,13 @@ Employee.create!(name: "Example User",
                    password: "password",
                    password_confirmation: "password")
 end
+
+Team.create!(name: "Yado")
+Team.create!(name: "Snow")
+Team.create!(name: "Ticket")
+Team.create!(name: "Shopping")
+
+50.times do |n|
+  TeamEmployee.create!(employee_id: n + 1,
+                        team_id: n%4 + 1)
+end

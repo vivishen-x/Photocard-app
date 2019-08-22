@@ -10,7 +10,8 @@ class Employee < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
   mount_uploader :photo, PhotoUploader
   validate :photo_size
-
+  has_many :team_employees, dependent: :destroy
+  has_many :teams, through: :team_employees
 
   def Employee.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.min_cost

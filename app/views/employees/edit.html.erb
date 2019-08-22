@@ -16,6 +16,18 @@
           <%= e.label :name %>
           <%= e.text_field :name, placeholder: "Name", class: 'form-control' %>
 
+
+					<%= e.label :team %>
+					<% unless @team_employee.nil? %>
+						<% @team_employee.each do %>
+						<%= e.select :team_ids, options_for_select([[ "Yado", 1 ],
+						 																				[ "Snow", 2 ],
+																										[ "Ticket", 3 ],
+																										[ "Shopping", 4 ]]) %>
+
+						<% end %>
+					<% end %>
+
           <%= e.label :position %>
           <%= e.select :position, options_for_select( [["Translator"],
                                                       ["Customer Support"],

@@ -11,9 +11,11 @@ class EmployeesIndexTest < ActionDispatch::IntegrationTest
       log_in_as(@admin)
       get employees_path
       assert_template 'employees/index'
-      first_page_of_employees = Employee.paginate(page: 1)
+      assert_select 'div.pagination', count: 2
+      first_page_of_employees = Employee.paginate(page: 1, per_page: 5)
       first_page_of_employees.each do |employee|
         assert_select 'a[href=?]', employee_path(employee)
+        assert_select 'h2', employee.name
       end
 
       get employee_path(@non_admin)

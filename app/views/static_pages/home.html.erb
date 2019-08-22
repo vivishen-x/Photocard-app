@@ -1,14 +1,23 @@
 <% if logged_in? %>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-12">
+			<% @teams.each do |team| %>
+			<h1 class="teamname">
+					<%= team.name.upcase %> (<%= team.employees.count %>)
+			</h1>
+			<div class="team-lineup">
+
+				<% team.team_employees.each do |team_employee| %>
+					<% @employee = team_employee.employee %>
+					<%= render 'photo' %>
+				<% end %>
+
+			</div>
+			<% end %>
+
 		</div>
-		<div class="col-md-6">
-				
-				<% render 'employees/employee' %>
-		</div>
-		<div class="col-md-3">
-		</div>
+
 	</div>
 </div>
 

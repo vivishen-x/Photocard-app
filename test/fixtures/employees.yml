@@ -15,5 +15,6 @@ archer:
 employee_<%= n %>:
   name:  <%= "Employee #{n}" %>
   email: <%= "user-#{n}@wamazing.jp" %>
+  position: Customer Support
   password_digest: <%= Employee.digest('password') %>
 <% end %>

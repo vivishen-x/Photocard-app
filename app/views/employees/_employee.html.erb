@@ -3,12 +3,19 @@
 <%= link_to(employee) do %>
 <div class="photocard">
   <div class="row">
-				<div class="col-md-4 photocard-photo">
+				<div class="col-md-6 photocard-photo">
           <%= image_tag(employee.photo) %>
 				</div>
-				<div class="col-md-8">
-          <h1><%= employee.name %></h1>
-          <h2><%= employee.position %></h2>
+				<div class="col-md-6">
+
+          <h2><%= employee.name %></h2>
+
+          <h3><%= employee.position %></h3>
+          <h3>
+            <% employee.teams.each do |team| %>
+              <%= team.name %>
+            <% end %>
+          </h3>
 				</div>
 	</div>
 </div>
