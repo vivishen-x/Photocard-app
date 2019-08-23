@@ -1,22 +1,23 @@
 <% employee ||= current_employee %>
 
 <%= link_to(employee) do %>
+
 <div class="photocard">
   <div class="row">
-				<div class="col-md-6 photocard-photo">
-          <%= image_tag(employee.photo) %>
-				</div>
-				<div class="col-md-6">
+			<div class="col-md-6 photocard-photo">
+        <%= image_tag(employee.photo) %>
+			</div>
+			<div class="col-md-6">
 
-          <h2><%= employee.name %></h2>
+        <h2><%= employee.name %></h2>
 
-          <h3><%= employee.position %></h3>
-          <h3>
-            <% employee.teams.each do |team| %>
-              <%= team.name %>
-            <% end %>
-          </h3>
-				</div>
-	</div>
+        <h3><%= employee.position %></h3>
+        <h3>
+          <% employee.teams.each do |team| %>
+            <%= team.name %>
+          <% end %>
+        </h3>
+       </div>
+  </div>
 </div>
 <% end %>

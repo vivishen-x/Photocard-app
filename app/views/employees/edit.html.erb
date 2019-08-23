@@ -23,7 +23,8 @@
 						<%= e.select :team_ids, options_for_select([[ "Yado", 1 ],
 						 																				[ "Snow", 2 ],
 																										[ "Ticket", 3 ],
-																										[ "Shopping", 4 ]]) %>
+																										[ "Shopping", 4 ]], selected: @employee.team_ids),
+																										class: 'form-control' %>
 
 						<% end %>
 					<% end %>
@@ -36,12 +37,6 @@
                                                       class: 'form-control' %>
           <%= e.label :employed_at %>
           <%= e.date_select :employed_at, discard_day: true, default: 1.year.ago, class: 'form-control' %>
-
-          <%= e.label :password %>
-          <%= e.password_field :password, placeholder: "At least 8 characters", class: 'form-control' %>
-
-          <%= e.label :password_confirmation, "Confirmation your password" %>
-          <%= e.password_field :password_confirmation, placeholder: "At least 8 characters", class: 'form-control' %>
 
           <%= e.submit "Update my profile", class: "btn btn-primary" %>
           <% end %>

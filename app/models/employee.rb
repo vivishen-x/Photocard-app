@@ -38,7 +38,7 @@ class Employee < ApplicationRecord
 
   def self.search(search)
     if search
-      where(['name LIKE ? or position LIKE ?',
+      where(['name LIKE ? or position LIKE ? ',
               "%#{search}%", "%#{search}%"])
     else
       all

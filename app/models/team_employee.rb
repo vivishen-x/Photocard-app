@@ -4,4 +4,6 @@ class TeamEmployee < ApplicationRecord
 
   validates :employee, presence: true
   validates :team, presence: true
+
+  # default_scope -> { includes(:employee).order("employees.name") }
 end
