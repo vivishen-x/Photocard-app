@@ -1,7 +1,5 @@
 <% provide(:title, "Log in") %>
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-3">
 				</div>
@@ -13,6 +11,7 @@
 						<%= e.email_field :email, placeholder: "@wamazing.jp only", class: 'form-control' %>
 
 						<%= e.label :password %>
+						<%= link_to "(forgot password)", new_password_reset_path %>
 						<%= e.password_field :password, placeholder: "Password here", class: 'form-control' %>
 
 						<%= e.label :remember_me, class: "checkbox inline" do %>
@@ -27,6 +26,4 @@
 				<div class="col-md-3">
 				</div>
 			</div>
-		</div>
-	</div>
 </div>

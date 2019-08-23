@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
@@ -53,6 +53,20 @@ class Employee < ApplicationRecord
 
   def send_activation_email
     EmployeeMailer.account_activation(self).deliver_now
+  end
+
+  def create_reset_digest
+    self.reset_token = Employee.new_token
+    update_columns(reset_digest: Employee.digest(reset_token),
+                   reset_sent_at: Time.zone.now)
+  end
+
+  def send_password_reset_email
+    EmployeeMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 
   private

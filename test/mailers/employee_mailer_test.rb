@@ -13,4 +13,15 @@ class EmployeeMailerTest < ActionMailer::TestCase
     assert_match CGI.escape(employee.email), mail.body.encoded
   end
 
+  test "password_reset" do
+    employee = employees(:michael)
+    employee.reset_token = Employee.new_token
+    mail = EmployeeMailer.password_reset(employee)
+    assert_equal "Password reset", mail.subject
+    assert_equal [employee.email], mail.to
+    assert_equal ["noreply@wamazing.jp"], mail.from
+    assert_match employee.reset_token, mail.body.encoded
+    assert_match CGI.escape(employee.email), mail.body.encoded
+  end
+
 end

@@ -10,7 +10,9 @@ class EmployeeMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/employee_mailer/password_reset
   def password_reset
-    EmployeeMailer.password_reset
+    employee = Employee.first
+    employee.reset_token = Employee.new_token
+    EmployeeMailer.password_reset(employee)
   end
 
 end
