@@ -2,12 +2,12 @@
 
 <%= link_to(employee) do %>
 
-<div class="photocard">
-  <div class="row">
-			<div class="col-md-6 photocard-photo">
+<div class="col-md-5 photocard">
+  
+			<div class="col-sm-6 photocard-photo">
         <%= image_tag(employee.photo) %>
 			</div>
-			<div class="col-md-6">
+			<div class="col-sm-6">
 
         <h2><%= employee.name %></h2>
 
@@ -18,6 +18,5 @@
           <% end %>
         </h3>
        </div>
-  </div>
 </div>
 <% end %>

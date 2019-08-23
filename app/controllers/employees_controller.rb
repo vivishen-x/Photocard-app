@@ -50,7 +50,7 @@ class EmployeesController < ApplicationController
   end
 
   def search
-    @employees = Employee.search(params[:search]).paginate(page: params[:page])
+    @employees = Employee.search(params[:search]).paginate(page: params[:page], per_page: 10)
   end
 
 

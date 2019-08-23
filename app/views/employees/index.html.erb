@@ -1,12 +1,12 @@
 <% provide(:title, "All Employees") %>
 <div class="container-fluid center">
 	<h1><%= @employees.count %> Employees</h1>
-<%= will_paginate %>
-
+	<%= will_paginate %>
 
 		<div class="employee-lineup">
-
+			<div class="row">
         <%= render @employees %>
+			</div>
 		</div>
 
 	<%= will_paginate %>
