@@ -4,12 +4,16 @@ michael:
   position: Manager
   password_digest: <%= Employee.digest('password') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 archer:
   name: Archer William
   email: archer@wamazing.jp
   position: Translator
   password_digest: <%= Employee.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 employee_<%= n %>:
@@ -17,4 +21,6 @@ employee_<%= n %>:
   email: <%= "user-#{n}@wamazing.jp" %>
   position: Customer Support
   password_digest: <%= Employee.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>

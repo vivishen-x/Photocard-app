@@ -1,9 +1,12 @@
-Employee.create!(name: "Example User",
+Employee.create!(name: "Admin User",
                  email: "example-01@wamazing.jp",
                  position: "Translator",
                  employed_at: 1.month.ago,
                  password: "password",
-                 password_confirmation: "password")
+                 password_confirmation: "password",
+                 admin: true,
+                 activated: true,
+                 activated_at: Time.zone.now)
 
 49.times do |n|
   name = Faker::Name.name
@@ -15,7 +18,9 @@ Employee.create!(name: "Example User",
                    position: position,
                    employed_at: employed_at,
                    password: "password",
-                   password_confirmation: "password")
+                   password_confirmation: "password",
+                   activated: true,
+                   activated_at: Time.zone.now)
 end
 
 Team.create!(name: "Yado")

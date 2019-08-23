@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     get '/search', to: 'employees#search'
 
     resources :employees
+    resources :account_activations, only: [:edit]
 end

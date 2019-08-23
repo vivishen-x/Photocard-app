@@ -14,6 +14,7 @@ class EmployeesIndexTest < ActionDispatch::IntegrationTest
       assert_select 'div.pagination', count: 2
       first_page_of_employees = Employee.paginate(page: 1, per_page: 5)
       first_page_of_employees.each do |employee|
+
         assert_select 'a[href=?]', employee_path(employee)
         assert_select 'h2', employee.name
       end

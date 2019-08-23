@@ -10,21 +10,22 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      log_in @employee
-      flash[:success] = "Welcome to our service! Fill in more information about you! "
-      redirect_to @employee
+      @employee.send_activation_email
+      flash[:info] = "Please check your email to activate your account. "
+      redirect_to root_url
     else
       render 'new'
     end
   end
 
   def index
-    @employees = Employee.paginate(page: params[:page], per_page: 10)
+    @employees = Employee.where(activated: true).paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @employee = Employee.find(params[:id])
     @teams = @employee.teams
+    redirect_to root_url and return unless @employee.activated?
   end
 
   def edit
