@@ -1,13 +1,13 @@
 <% employee ||= current_employee %>
 
-<%= link_to(employee) do %>
+<div class="card-container">
 
 <div class="col-md-5 photocard">
-  
 			<div class="col-sm-6 photocard-photo">
         <%= image_tag(employee.photo) %>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6 photocard-info">
+        <%= link_to(employee) do %>
 
         <h2><%= employee.name %></h2>
 
@@ -17,6 +17,14 @@
             <%= team.name %>
           <% end %>
         </h3>
+
+        <% end %>
+        <%# Tag list %>
+        <% @employee = employee %>
+        <%= render 'shared/tags' %>
        </div>
+
+
+			 </div>
+
 </div>
-<% end %>

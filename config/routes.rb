@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
     get '/search', to: 'employees#search'
+    get '/tagged', to: 'employees#tagged', as: :tagged
 
     resources :employees
     resources :account_activations, only: [:edit]

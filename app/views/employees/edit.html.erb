@@ -5,42 +5,7 @@
 		</div>
 		<div class="col-md-8">
 			<div class="jumbotron card card-block center profile-form">
-        <%= image_tag(@employee.photo, size: '200') %>
-
-        <%= form_for(@employee) do |e| %>
-        <%= render 'shared/error_messages' %>
-					<span class="photo">
-					<%= e.file_field :photo, accept: 'image/jpeg, image/gif, image/png' %>
-					</span>
-
-          <%= e.label :name %>
-          <%= e.text_field :name, placeholder: "Name", class: 'form-control' %>
-
-
-					<%= e.label :team %>
-					<% unless @team_employee.nil? %>
-						<% @team_employee.each do %>
-						<%= e.select :team_ids, options_for_select([[ "Yado", 1 ],
-						 																				[ "Snow", 2 ],
-																										[ "Ticket", 3 ],
-																										[ "Shopping", 4 ]], selected: @employee.team_ids),
-																										class: 'form-control' %>
-
-						<% end %>
-					<% end %>
-
-          <%= e.label :position %>
-          <%= e.select :position, options_for_select( [["Translator"],
-                                                      ["Customer Support"],
-                                                      ["Project Manager"],
-                                                      ["Engineer"],["Marketing"]], selected: @employee.position),
-                                                      class: 'form-control' %>
-          <%= e.label :employed_at %>
-          <%= e.date_select :employed_at, discard_day: true, default: 1.year.ago, class: 'form-control' %>
-
-          <%= e.submit "Update my profile", class: "btn btn-primary" %>
-          <% end %>
-
+				<%= render 'form' %>
 			</div>
 		</div>
     <div class="col-md-2">

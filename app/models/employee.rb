@@ -13,6 +13,13 @@ class Employee < ApplicationRecord
   validate :photo_size
   has_many :team_employees, dependent: :destroy
   has_many :teams, through: :team_employees
+  acts_as_taggable
+  acts_as_taggable_on :tags # Create tags for Employee
+  validate :max_tag_size
+
+  def max_tag_size
+    errors[:tag_list] << "Maximum 5 tags" if tag_list.count > 5
+  end
 
   def Employee.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -38,10 +45,14 @@ class Employee < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+# Search by all attributes of Employee
   def self.search(search)
     if search
-      where(['name LIKE ? or position LIKE ? ',
-              "%#{search}%", "%#{search}%"])
+      where(
+        Employee.column_names
+          .map{ |field|  "#{field} like '%#{search}%'"  }
+          .join(" or ")
+      )
     else
       all
     end

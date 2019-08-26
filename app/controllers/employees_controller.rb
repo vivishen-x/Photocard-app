@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @employees = Employee.where(activated: true).paginate(page: params[:page], per_page: 10)
+    @employees = Employee.where(activated: true).paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -50,15 +50,22 @@ class EmployeesController < ApplicationController
   end
 
   def search
-    @employees = Employee.search(params[:search]).paginate(page: params[:page], per_page: 10)
+    @employees = Employee.where(activated: true).search(params[:search]).paginate(page: params[:page], per_page: 20)
   end
 
+  def tagged
+    if params[:tag].present?
+      @employees = Employee.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 20)
+    else
+      all
+    end
+  end
 
 
   private
 
     def employee_params
-      params.require(:employee).permit(:name, :email, :photo, :team_ids, :position, :employed_at, :password, :password_confirmation)
+      params.require(:employee).permit(:name, :email, :photo, :team_ids, :position, :employed_at, :password, :password_confirmation, :tag_list)
     end
 
     def logged_in_employee

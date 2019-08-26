@@ -2,8 +2,22 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+
+			<div class="tag-lineup center">
+				<!--
+				<h1>Hot tags</h1>
+				<%# <% @tags = ActsAsTaggableOn::Tag.most_used(5) %> %>
+				<%# <% @tags.each do |tag| %> %>
+					<span class="label label-primary"><%= tag %></span>
+				<%# <% end %> %>
+				-->
+
+
+			</div>
+
+
 			<% @teams.each do |team| %>
-			<h1 class="teamname">
+			<h1 class="teamname" id=<%= team.name %>>
 					<%= team.name.upcase %> (<%= team.employees.count %>)
 			</h1>
 			<div class="team-lineup">
